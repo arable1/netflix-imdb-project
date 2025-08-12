@@ -14,6 +14,7 @@
 
 ## Project Structure
 
+```text
 netflix-imdb-project/
 ├── .gitignore
 ├── README.md
@@ -22,6 +23,7 @@ netflix-imdb-project/
 ├── .env
 ├── data/
 │   ├── raw/
+│   │   └── netflix_titles.csv
 │   ├── processed/
 │   └── external/
 ├── notebooks/
@@ -41,3 +43,4 @@ netflix-imdb-project/
     ├── app.py
     ├── templates/
     └── static/
+```

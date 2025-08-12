@@ -1,0 +1,40 @@
+{
+  "source": "strict merge (title+year) + light enrichment",
+  "filename": "netflix_strict_clean.csv",
+  "n_rows": 3067,
+  "n_cols": 26,
+  "created_utc": "2025-08-12T16:32:46.523532Z",
+  "schema_preview": {
+    "numerics": [
+      "desc_len",
+      "duration_minutes",
+      "imdb_score",
+      "imdb_votes",
+      "imdb_votes_log1p",
+      "index",
+      "is_classic",
+      "is_show",
+      "join_year",
+      "num_genres",
+      "release_year",
+      "runtime"
+    ],
+    "booleans": [],
+    "objects": [
+      "age_certification",
+      "cast",
+      "country",
+      "date_added",
+      "description",
+      "director",
+      "duration",
+      "id",
+      "imdb_id",
+      "listed_in",
+      "rating",
+      "title",
+      "title_norm",
+      "type"
+    ]
+  }
+}
