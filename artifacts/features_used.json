@@ -1,0 +1,40 @@
+{
+  "numeric_cols": [
+    "imdb_votes",
+    "imdb_votes_log1p",
+    "duration_minutes",
+    "release_year",
+    "desc_len",
+    "num_genres",
+    "is_show",
+    "is_classic"
+  ],
+  "categorical_cols": [
+    "type",
+    "age_G",
+    "age_Other",
+    "age_PG",
+    "age_PG-13",
+    "age_R",
+    "age_TV-14",
+    "age_TV-G",
+    "age_TV-MA",
+    "age_TV-PG",
+    "age_TV-Y",
+    "age_TV-Y7",
+    "age_Unknown",
+    "ctry_Canada",
+    "ctry_France",
+    "ctry_India",
+    "ctry_Japan",
+    "ctry_Nigeria",
+    "ctry_Other",
+    "ctry_Philippines",
+    "ctry_South Korea",
+    "ctry_Spain",
+    "ctry_United Kingdom",
+    "ctry_United States",
+    "ctry_Unknown"
+  ],
+  "target": "imdb_score"
+}

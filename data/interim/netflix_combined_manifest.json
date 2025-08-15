@@ -1,0 +1,13 @@
+{
+  "source": "netflix_combined_clean.csv (synced to strict rules)",
+  "rows": 5267,
+  "cols": 26,
+  "dropped_missing_imdb_votes": 16,
+  "nulls_key_fields": {
+    "age_certification": 0,
+    "country": 0,
+    "duration_minutes": 0,
+    "imdb_votes": 0,
+    "imdb_votes_log1p": 0
+  }
+}

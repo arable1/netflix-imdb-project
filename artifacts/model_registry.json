@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-08-14 18:50:22",
+  "dataset": "strict",
+  "split": {
+    "train": 2146,
+    "valid": 460,
+    "test": 461
+  },
+  "final_metrics": [
+    {
+      "Model": "RandomForest(200)",
+      "MAE": 0.7538383947939262,
+      "RMSE": 0.9781154039746064,
+      "R2": 0.2543179776163268
+    },
+    {
+      "Model": "Ridge(alpha=1.0)",
+      "MAE": 0.796734085830712,
+      "RMSE": 1.0275003650908052,
+      "R2": 0.17711822163840996
+    }
+  ],
+  "saved_models": {
+    "RandomForest(200)": "../models/RandomForest_200_.joblib",
+    "Ridge(alpha=1.0)": "../models/Ridge_alpha_1_0_.joblib"
+  }
+}
