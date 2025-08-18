@@ -1,26 +1,48 @@
-# OS
+# --- OS / Editors ---
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
-# Python
+# --- Python ---
 __pycache__/
 *.py[cod]
 *.egg-info/
 *.egg
 
-# Environments / secrets
+# --- Environments / secrets ---
 .env
 .venv/
 venv/
 .kaggle/
 
-# Jupyter
+# --- Jupyter ---
 .ipynb_checkpoints/
 
-# Data
+# --- Data ---
+# raw and external should never be committed
 data/raw/
 data/external/
 *.zip
 
-# Reports/Artifacts
+# processed/interim can get huge; keep optional samples only
+data/interim/
+data/processed/*.parquet
+data/processed/*.feather
+# allow small CSVs if you want them versioned; otherwise uncomment next line:
+# data/processed/
+
+# --- Reports / Artifacts / Models ---
 reports/figures/*
-models/*
+artifacts/
+models/
+# if you want to keep model registry JSONs, whitelist like:
+!artifacts/*.md
+!reports/metrics_summary.csv
+!reports/summary.md
+!reports/final_report.md
+
+# --- Logs / temp ---
+logs/
+*.log
+tmp/
