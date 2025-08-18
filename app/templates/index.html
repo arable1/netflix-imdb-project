@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Netflix IMDb Predictor{% endblock %}
+
+{% block content %}
+<h1>Netflix IMDb Predictor</h1>
+<p>Fill the fields below and click <strong>Predict</strong>.</p>
+
+<form method="POST" action="{{ url_for('predict') }}" class="card">
+  <div class="grid">
+    <label>Type
+      <select name="type">
+        {% for t in type_opts %}
+        <option value="{{t}}">{{t}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Age Certification
+      <select name="age_cert">
+        {% for a in age_opts %}
+        <option value="{{a}}">{{a}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Country
+      <select name="country">
+        {% for c in country_opts %}
+        <option value="{{c}}">{{c}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Release Year ({{year_min}}–{{year_max}})
+      <input type="number" name="release_year" min="{{year_min}}" max="{{year_max}}" value="{{year_max}}" />
+    </label>
+
+    <label>Duration (minutes) ({{dur_min}}–{{dur_max}})
+      <input type="number" name="duration_minutes" min="{{dur_min}}" max="{{dur_max}}" value="{{dur_min}}" />
+    </label>
+
+    <label>Description length ({{desc_min}}–{{desc_max}})
+      <input type="number" name="desc_len" min="{{desc_min}}" max="{{desc_max}}" value="200" />
+    </label>
+
+    <label>Number of genres (1–5)
+      <input type="number" name="num_genres" min="1" max="5" value="2" />
+    </label>
+
+    <label>IMDb votes (optional) ({{votes_min}}–{{votes_max}})
+      <input type="number" name="imdb_votes" min="{{votes_min}}" max="{{votes_max}}" placeholder="auto-median if empty"/>
+    </label>
+  </div>
+
+  <button type="submit" class="btn">Predict</button>
+</form>
+
+<hr/>
+
+<p>
+  Or try:
+  <a class="btn-link" href="{{ url_for('recommend') }}">Recommendations</a>
+  <a class="btn-link" href="{{ url_for('similar') }}">Similar Titles</a>
+</p>
+{% endblock %}

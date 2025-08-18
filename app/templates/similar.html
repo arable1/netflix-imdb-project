@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Similar Titles{% endblock %}
+
+{% block content %}
+<h1>Similar Titles</h1>
+
+{% if not enabled %}
+<div class="alert warn">
+  Similarity is disabled. Run:
+  <code>python scripts/build_similarity.py</code>
+  and refresh this page.
+</div>
+{% endif %}
+
+<form method="POST" action="{{ url_for('similar') }}" class="card">
+  <div class="grid">
+    <label>Type
+      <select name="type">
+        {% for t in type_opts %}
+        <option value="{{t}}">{{t}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Query (title/plot keywords)
+      <input type="text" name="query" placeholder="e.g., heist space romance"/>
+    </label>
+
+    <label>Genres (multi-select)
+      <select name="genres" multiple size="6">
+        {% for g in genre_opts %}
+        <option value="{{g}}">{{g}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Country
+      <select name="country">
+        {% for c in country_opts %}
+        <option value="{{c}}">{{c}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Age Certification
+      <select name="age_cert">
+        {% for a in age_opts %}
+        <option value="{{a}}">{{a}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Release Year (exact)
+      <input type="number" name="year" min="{{year_min}}" max="{{year_max}}" placeholder="optional"/>
+    </label>
+
+    <label>How many results?
+      <input type="number" name="top_n" min="1" max="100" value="20" />
+    </label>
+  </div>
+
+  <button type="submit" class="btn" {% if not enabled %}disabled{% endif %}>Search</button>
+</form>
+
+{% if results %}
+<h2>Similar Titles</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th><th>Type</th><th>Year</th><th>Age</th><th>Country</th><th>Genres</th><th>IMDb</th><th>Similarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td>{{ r.title }}</td>
+      <td>{{ r.type }}</td>
+      <td>{{ r.release_year }}</td>
+      <td>{{ r.age_certification }}</td>
+      <td>{{ r.country }}</td>
+      <td>{{ r.listed_in }}</td>
+      <td>{{ "%.1f"|format(r.imdb_score) }}</td>
+      <td>{{ "%.3f"|format(r.sim) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<p><a class="btn-link" href="{{ url_for('home') }}">← Back to Predictor</a></p>
+{% endblock %}

@@ -1,0 +1,15 @@
+# .dockerignore
+.git
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+.env
+venv/
+.venv/
+
+# big or irrelevant folders
+data/raw/
+data/interim/
+notebooks/
+reports/
+artifacts/*.png

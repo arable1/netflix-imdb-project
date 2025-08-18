@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<h1>Prediction Result</h1>
+
+<div class="card">
+  <p><strong>Predicted IMDb score:</strong> {{ pred_score }} (dataset range {{ "%.1f"|format(score_min) }}–{{ "%.1f"|format(score_max) }})</p>
+  <p><strong>High (≥ 7.0) probability:</strong> {{ high_prob }}</p>
+  <p><strong>Classification:</strong> {{ classification }}</p>
+  <hr/>
+  <p class="muted">Note: predictions are based on patterns learned from the historical dataset and reflect general tendencies, not reviews.</p>
+</div>
+
+<p><a class="btn-link" href="{{ url_for('home') }}">← Back</a></p>
+{% endblock %}

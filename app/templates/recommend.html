@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Recommendations{% endblock %}
+
+{% block content %}
+<h1>Recommendations</h1>
+<form method="POST" action="{{ url_for('recommend_search') }}" class="card">
+  <div class="grid">
+    <label>Type
+      <select name="type">
+        {% for t in type_opts %}
+        <option value="{{t}}">{{t}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Genres (multi-select)
+      <select name="genres" multiple size="6">
+        {% for g in genre_opts %}
+        <option value="{{g}}">{{g}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Country
+      <select name="country">
+        {% for c in country_opts %}
+        <option value="{{c}}">{{c}}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Min Year ({{year_min}}–{{year_max}})
+      <input type="number" name="min_year" min="{{year_min}}" max="{{year_max}}" value="{{year_min}}" />
+    </label>
+
+    <label>Max Year ({{year_min}}–{{year_max}})
+      <input type="number" name="max_year" min="{{year_min}}" max="{{year_max}}" value="{{year_max}}" />
+    </label>
+
+    <label>Min IMDb score ({{score_min}}–{{score_max}})
+      <input type="number" name="min_score" min="{{score_min}}" max="{{score_max}}" step="0.1" value="7.0" />
+    </label>
+
+    <label>Number of results
+      <input type="number" name="top_n" min="1" max="100" value="20" />
+    </label>
+  </div>
+
+  <button type="submit" class="btn">Search</button>
+</form>
+
+{% if results %}
+<h2>Results</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th><th>Type</th><th>Year</th><th>Age</th><th>Country</th><th>Genres</th><th>IMDb</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td>{{ r.title }}</td>
+      <td>{{ r.type }}</td>
+      <td>{{ r.release_year }}</td>
+      <td>{{ r.age_certification }}</td>
+      <td>{{ r.country }}</td>
+      <td>{{ r.listed_in }}</td>
+      <td>{{ "%.1f"|format(r.imdb_score) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<p><a class="btn-link" href="{{ url_for('home') }}">← Back to Predictor</a></p>
+{% endblock %}
